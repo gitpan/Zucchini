@@ -1,0 +1,94 @@
+#!/usr/bin/env perl
+# vim: ts=8 sts=4 et sw=4 sr sta
+use strict;
+use warnings;
+
+use Getopt::Long;
+use Pod::Usage;
+use Zucchini;
+
+# evil globals
+my ($zucchini, %cliopt);
+
+# get command-line options from user
+GetOptions (
+    \%cliopt,
+    'dry-run!',
+    'force!',
+    'fsync!',
+    'fsync-only!',
+    'ftp-debug',
+    'help!',
+    'quiet',
+    'rsync!',
+    'rsync-only!',
+    'showdestination!',
+    'showpath!',
+    'site=s',
+    'sites',
+    'verbose+',
+);
+
+if ($cliopt{help}) {
+    pod2usage(); # exits for us
+}
+
+# create a new zucchini object
+$zucchini = Zucchini->new(
+    \%cliopt
+);
+
+# call the high-level function that works out what needs doing ... and does it
+$zucchini->gogogo;
+
+exit; # all done
+
+__END__
+
+=pod
+
+=head1 NAME
+
+zucchini - script to generate and upload template based websites
+
+=head1 DESCRIPTION
+
+TODO
+
+=head1 SYNOPSIS
+
+  zucchini [options]
+
+    --site=LABEL    process the site called LABEL
+
+    --force         force all templates to be regenerated
+    --showpath      show paths relative from site's <source_dir>
+    --showdest      show full path to files written to site's <output_dir>
+
+    --rsync         transfer generated site to server using rsync
+    --rsync-only    transfer generated site to server using rsync
+                    [do not regenerate site first]
+
+    --dry-run       perform a dry-run of the rsync - do not transfer any files
+
+    --verbose       increase the verbosity of the script
+    --help          display this help information
+
+=head1 SEE ALSO
+
+Zucchini
+
+=head1 AUTHOR
+
+Chisel Wright C<< <chiselwright@users.berlios.de> >>
+
+=head1 LICENSE
+
+Copyright 2008 by Chisel Wright
+
+This program is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself.
+
+See <http://www.perl.com/perl/misc/Artistic.html>
+
+=cut
