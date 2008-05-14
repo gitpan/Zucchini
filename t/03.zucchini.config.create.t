@@ -8,6 +8,10 @@ use Test::More tests => 3;
 BEGIN {
     use_ok 'Zucchini::Config::Create';
 }
+BEGIN {
+    use File::Temp qw(tempdir);
+    use Path::Class;
+}
 
 can_ok(
     'Zucchini::Config::Create',
@@ -20,6 +24,8 @@ can_ok(
 my $zucchini_cfg_create = Zucchini::Config::Create->new();
 isa_ok($zucchini_cfg_create, q{Zucchini::Config::Create});
 
+my $tempdir = tempdir( CLEANUP => 1 );
+
 $zucchini_cfg_create->write_default_config(
-    '/tmp/testcnf'
+    file($tempdir, q{.zucchini})
 );
