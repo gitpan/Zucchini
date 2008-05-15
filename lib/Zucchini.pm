@@ -95,7 +95,7 @@ use Class::Std;
                 config => $self->get_config,
             }
         );
-        # process the site
+        # transfer the site
         $fsyncer->ftp_sync;
 
         return;
@@ -111,7 +111,7 @@ use Class::Std;
                 config => $self->get_config,
             }
         );
-        # process the site
+        # transfer the site
         $rsyncer->remote_sync;
 
         return;
@@ -128,20 +128,87 @@ __END__
 
 Zucchini - turn templates into static websites
 
-=head1 DESCRIPTION
-
-TODO
-
 =head1 SYNOPSIS
 
-TODO
+  $ zucchini --create-config    # create a default config
+
+  $ perldoc Zucchini::Config    # information for configuring Zucchini
+
+  $ perldoc zucchini            # the worker script
+
+=head1 DESCRIPTION
+
+You have a hosted website. It's static. Your website has the
+same headers, footers, menu, etc.
+
+Copying the same change from the header section in one file into
+the other fifty-eight files in your site is boring.
+It's also prone to error.
+
+Ideally the site would be written using some kind of templating
+system, so header files et al only needed to be updated once.
+
+This is where Zucchini comes in. Zucchini processes a directory
+of templates (written using L<Template::Toolkit> markup) and outputs
+a static copy of each processed template.
+
+You now have the source for a staic website, waiting to be uploaded
+to your remote server - which, conveniently, Zucchini can do for you;
+using rsync or ftp.
+
+Zucchini is usually invoked through the C<zucchini> script, which is installed
+as part of the package.
+
+=head1 METHODS
+
+=head2 new
+
+Creates a new instance of the top-level Zucchini object:
+
+  # create a new zucchini object
+  $zucchini = Zucchini->new(
+    \%cliopt
+  );
+
+=head2 gogogo
+
+This function is called from the C<zucchini> script and decides what
+actions to perform based on the command-line options passed to new()
+
+  # work out what to do, and Just Do It
+  $zucchini->gogogo;
+
+=head2 process_templates
+
+This function processes the template directories and outputs the static
+website source files.
+
+  # generate the static site
+  $zucchini->process_templates;
+
+=head2 ftp_sync
+
+This function transfers the static website source files to the remote server
+using an FTP solution.
+
+  # transfer files to remote FTP site
+  $zucchini->ftp_sync;
+
+=head2 remote_sync
+
+This function transfers the static website source files to the remote server
+using an rsync solution.
+
+  # transfer files to remote server, using rsync
+  $zucchini->remote_sync;
 
 =head1 SEE ALSO
 
 L<Zucchini::Config>,
 L<Zucchini::Fsync>,
 L<Zucchini::Rsync>,
-L<Zucchini::Template>
+L<Zucchini::Template>,
+L<Template>
 
 =head1 AUTHOR
 
