@@ -4,7 +4,15 @@ use strict;
 use warnings;
 
 # from mst on #catalyst
-our $VERSION = '0.000005'; $VERSION = eval $VERSION;
+use version; our $VERSION = qv(0.0.6)->numify;
+
+package Zucchini::Version;
+
+our $VERSION = $Zucchini::VERSION;
+
+1;
+
+__END__
 
 =head1 NAME
 
@@ -41,5 +49,3 @@ the same terms as Perl itself.
 See <http://www.perl.com/perl/misc/Artistic.html>
 
 =cut
-
-1;

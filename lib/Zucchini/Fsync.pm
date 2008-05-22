@@ -270,9 +270,8 @@ use Class::Std;
         my (@md5strings, $transfer_actions);
 
         # make sure we have an ftp client to use
-        $self->prepare_ftp_client;
         if (not defined $self->get_ftp_client) {
-            warn(qq{Failed to connect to remote FTP server. Aborting upload.\n});
+            warn(qq{Failed to obtain remote FTP connection. Aborting upload.\n});
             return;
         }
 
@@ -343,12 +342,15 @@ use Class::Std;
         my (%md5_of, @lines);
 
         if (not defined $file or $file =~ m{\A\s*\z}) {
-            carp "undefined filename passed to parse_md5file()";
+            # empty digest file
+            carp "undefined filename passed to parse_md5file()"
+                if ($self->get_config->verbose(2));
             return {};
         }
 
         if (! -f $file) {
-            carp "$file: file not found";
+            carp "$file: file not found"
+                if ($self->get_config->verbose(2));
             return {};
         }
 

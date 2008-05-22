@@ -56,16 +56,32 @@ use Class::Std;
 
         # deal with user options
         if ($arg_ref->{site}) {
+            warn "using user-specified site label\n"
+                if ($self->verbose(2));
             $self->set_site( delete $arg_ref->{site} );
         }
 
         # if we don't have a site specified, try to use a default
         if (not defined $self->get_site()) {
+            warn "looking for default site\n"
+                if ($self->verbose(2));
             # set the default site (if specified in config file)
             if (defined (my $default = $self->get_data()->{default_site})) {
+                warn "using default site label\n"
+                    if ($self->verbose(2));
                 $self->set_site($default);
             }
+            else {
+                warn "no default site specified\n";
+            }
         }
+
+        # make sure out config is sane
+        if (not $self->_sane_config) {
+            warn "configuration file is not valid\n";
+            exit;
+        }
+
         return;
     }
 
@@ -78,7 +94,11 @@ use Class::Std;
 
         # make sure it's defined
         if (not defined $site) {
-            carp "'site' is not defined";
+            warn 
+                  q{'}
+                . $site
+                . q{' is not defined}
+                . qq{\n};
             return;
         }
 
@@ -200,6 +220,11 @@ use Class::Std;
 
         my $site_config = $self->get_siteconfig();
 
+        if (not defined $site_config) {
+            warn "site-specific configuration block is missing\n";
+            return;
+        }
+
         # these entries should all exist (as top-level keys) in the site-config
         foreach my $required_key (qw[
             source_dir
@@ -209,7 +234,6 @@ use Class::Std;
             ignore_dirs
             ignore_files
             tags
-            rsync
         ]) {
             if (not exists $site_config->{$required_key}) {
                 warn qq{** configuration option missing: $required_key\n};
@@ -220,7 +244,11 @@ use Class::Std;
         # these directories should exist
         foreach my $required_dir (qw[source_dir includes_dir output_dir]) {
             # dir should exist
-            if (not -d $site_config->{$required_dir}) {
+            if (
+                exists $site_config->{$required_dir}
+                    and
+                not -d $site_config->{$required_dir}
+            ) {
                 warn qq{** directory missing: $site_config->{$required_dir}\n};
                 $errors++;
             }
