@@ -1,5 +1,17 @@
 This file documents the revision history for Zucchini
 
+0.0.9   Fri Aug 22 19:26:30 BST 2008
+    - added missing t/testdata file
+
+0.0.8   Fri Aug 22 19:16:30 BST 2008
+    - converted from Class:Std to Moose base objects
+    - extended/improved test suite
+    - refactored common test code into ::Test module
+
+0.0.7   Tue Aug  5 20:10:56 BST 2008
+    - added HTML error checking (HTML::Lint)
+    - added missing --options to script/zucchini POD usage
+
 0.0.6   Thu May 22 08:56:06 BST 2008
     - only show missing digest warnings if we're verbose enough
     - only try to prepare remote FTP connection once
