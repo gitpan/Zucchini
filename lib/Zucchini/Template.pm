@@ -25,6 +25,8 @@ has ttobject => (
     isa     => 'Template',
 );
 
+__PACKAGE__->meta->make_immutable;
+
 sub process_site {
     my $self = shift;
     my $directory = $self->get_config->get_siteconfig->{source_dir};
@@ -362,7 +364,7 @@ sub show_destination {
     # get the relative path for the directory
     $relpath = $self->relative_path_from_full($directory);
 
-    if ($cliopt->{showdestination}) {
+    if ($cliopt->{showdest}) {
         if ($relpath) {
             warn(
                     q{  --> }
@@ -568,7 +570,7 @@ files.
 
 =head2 show_destination
 
-If the 'showdestination' option is active, output where we are writing a file
+If the 'showdest' option is active, output where we are writing a file
 to.
 
   # let user know where we're putting the item
