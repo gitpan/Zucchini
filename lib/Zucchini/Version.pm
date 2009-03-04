@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 # from mst on #catalyst
-use version; our $VERSION = qv(0.0.12)->numify;
+use version; our $VERSION = qv(0.0.13)->numify;
 
 package Zucchini::Version;
 
@@ -41,7 +41,7 @@ Chisel Wright C<< <chiselwright@users.berlios.de> >>
 
 =head1 LICENSE
 
-Copyright 2008 by Chisel Wright
+Copyright 2008-2009 by Chisel Wright
 
 This program is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself.

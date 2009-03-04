@@ -360,6 +360,11 @@ general form:
         passive         1
         path            /htdocs
     </ftp>
+
+    <tt_options>
+        PRE_PROCESS     my_header
+        POST_PROCESS    my_footer
+        # ... etc
   </sitelabel>
 
 =head2 CONFIGURATION FILE ELEMENTS
@@ -557,6 +562,14 @@ generated website.
         # ...
     </rsync>
 
+In an "rsync" block you may prepend the value with the username:
+
+    # e.g.
+    <rsync>
+        hostname    someuser@some.remote.server
+        # ...
+    </rsync>
+
 =item path
 
 Found in an "rsync" or "ftp" block, this is the path on the remote server
@@ -600,6 +613,20 @@ readable to yourself:
     # stop people peeking at our FTP credentials
     chmod 0600 ~/.zucchini
 
+=item <ttoptions>
+
+This block allows you to set or override configuration options for the
+L<Template> object that's created to process the templates.
+
+No validation is performed by L<Zucchini>. You can explore the available
+options by reading L<Template::Manual::Config>'s manual.
+
+    # e.g.
+    <tt_options>
+        PRE_PROCESS     my_header
+        POST_PROCESS    my_footer
+        EVAL_PERL       1
+    </tt_options>
 =back
 
 =head2 SETTING DEFAULT COMMAND-LINE VALUES
@@ -636,7 +663,7 @@ Chisel Wright C<< <chiselwright@users.berlios.de> >>
 
 =head1 LICENSE
 
-Copyright 2008 by Chisel Wright
+Copyright 2008-2009 by Chisel Wright
 
 This program is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself.
