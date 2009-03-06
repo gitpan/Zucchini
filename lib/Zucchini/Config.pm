@@ -25,6 +25,12 @@ has site => (
     writer  => 'set_site',
     isa     => 'Str',
 );
+has config_file => (
+    reader  => 'get_config_file',
+    writer  => 'set_config_file',
+    isa     => 'Str',
+    default => sub {q{}.file($ENV{HOME}, q{.zucchini})},
+);
 
 __PACKAGE__->meta->make_immutable;
 
@@ -38,7 +44,7 @@ sub BUILD {
         my $zucchini_cfg_create = Zucchini::Config::Create->new();
 
         $zucchini_cfg_create->write_default_config(
-            file($ENV{HOME}, q{.zucchini})
+            $self->get_config_file
         );
 
         exit;
@@ -57,6 +63,15 @@ sub BUILD {
         $self->_load_config();
     }
 
+    # if we don't have a config file - abort
+    if (not defined $self->get_data) {
+        warn (
+                $self->get_config_file
+            . qq{: configuration file not found, use 'create-config' option to create one\n}
+        );
+        exit;
+    }
+
     # see if we have any CLI options to inject from the config file
     if (defined $self->get_data()->{cli_defaults}) {
         my %merged_cli_options = (
@@ -64,15 +79,6 @@ sub BUILD {
             %{ $self->get_options }
         );
         $self->set_options( \%merged_cli_options );
-    }
-
-    # if we don't have a config file - abort
-    if (not defined $self->get_data) {
-        warn (
-                file($ENV{HOME}, q{.zucchini})
-            . qq{: configuration file not found, use 'create-config' option to create one\n}
-        );
-        exit;
     }
 
     # deal with user options
@@ -199,6 +205,24 @@ sub templated_files {
     return $templated;
 }
 
+sub always_process {
+    my $self = shift;
+
+    my $always_process = $self->get_siteconfig()->{always_process};
+
+    return
+        unless defined $always_process;
+
+    if (ref($always_process) eq q{ARRAY}) {
+        # do nothing - it's already a list-ref
+    }
+    else {
+        $always_process = [ $always_process ];
+    }
+
+    return $always_process;
+}
+
 sub verbose {
     my $self    = shift;
     my $level   = shift || 1;
@@ -208,7 +232,7 @@ sub verbose {
 sub _load_config {
     my $self    = shift;
 
-    my $config_file = file($ENV{HOME}, q{/.zucchini});
+    my $config_file = $self->get_config_file;
 
     # read/load/parse the config file
     my $cfg = Config::Any->load_files(
@@ -292,6 +316,11 @@ Zucchini::Config - manage configuration file loading
   # get a new config object
   my $zcfg = Zucchini::Config->new();
 
+  # get a new config object (using an alternative file)
+  my $zcfg = Zucchini::Config->new(
+    { config_file => $some_other_file }
+  );
+
   # get the parsed config data
   my $stuff = $zcfg->get_data();
 
@@ -309,6 +338,13 @@ All examples will assume the user is using the Config::General format.
 
 The C<.zucchini> configuration file is the governing force
 for the behaviour of the various Zucchini components.
+
+The default location for the configuration is set to
+
+  $ENV{HOME}/.zucchini
+
+This is usually overridden by using the C<--config=FILE> option when
+using script/zucchini.
 
 The file takes the following general form:
 
@@ -336,6 +372,9 @@ general form:
     output_dir          /var/www/default_site/html
 
     template_files      \.html\z
+
+    always_process      impressum.html
+    always_process      \.imp\z
 
     ignore_dirs         CVS
     ignore_dirs         .svn
@@ -473,6 +512,31 @@ new row for each filetype you require.
 
 The value used should be a perl regexp that can be applied to a filename.
 If in doubt, copy an existing rule and modify the '.html'.
+
+=item always_process
+
+Found in a "sitelabel" block, this option specifies which files should always
+be processed regardless of their modification time.
+
+    # always process *.imp files
+    always_process      '\.imp\z'
+
+You can specify as many items as you require. B<Each value is interpolated into
+a regular expression>.
+
+This means that
+
+    # this probably doesn't do what you think ...
+    always_process      dex.html
+
+will cause B<all> of your C<index.html> files to be processed. Instead use
+something like:
+
+    # you need to use start- and end- of string anchors
+    always_process      \Adex.html\z
+
+C<\A> and C<\z> are similar to C<^> amd C<$>. See L<perlre/Assertions> for
+more details.
 
 =item ignore_dirs
 
@@ -627,6 +691,7 @@ options by reading L<Template::Manual::Config>'s manual.
         POST_PROCESS    my_footer
         EVAL_PERL       1
     </tt_options>
+
 =back
 
 =head2 SETTING DEFAULT COMMAND-LINE VALUES
@@ -651,11 +716,13 @@ defaults in the I<.zucchini> file.
 
 =head1 SEE ALSO
 
+L<Config::Any>,
+L<Config::General>,
+L<perlre/Assertions>,
+L<Template::Manual::Config>,
 L<Zucchini>,
 L<Zucchini::Fsync>,
-L<Zucchini::Rsync>,
-L<Config::Any>,
-L<Config::General>
+L<Zucchini::Rsync>
 
 =head1 AUTHOR
 

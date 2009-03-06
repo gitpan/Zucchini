@@ -1,5 +1,11 @@
 This file documents the revision history for Zucchini
 
+0.0.14  Fri Mar  6 19:17:39 GMT 2009
+    - replace hard-coded path to config with object accessor that defaults to
+      our previously hard-coded value
+    - add --config switch to script/zucchini
+    - add "always_process" functionality
+
 0.0.13  Tue Mar  3 20:48:25 GMT 2009
     - update copyright date
     - add tt_option to config (passed thorugh as Template::Toolkit options)
