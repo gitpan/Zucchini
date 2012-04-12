@@ -1,6 +1,9 @@
 NAME
     Zucchini - turn templates into static websites
 
+VERSION
+    version 0.0.18_01
+
 SYNOPSIS
       $ zucchini --create-config    # create a default config
 
@@ -72,13 +75,11 @@ SEE ALSO
     Template
 
 AUTHOR
-    Chisel Wright "<chiselwright@users.berlios.de>"
+    Chisel <chisel@chizography.net>
 
-LICENSE
-    Copyright 2008 by Chisel Wright
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2012 by Chisel Wright.
 
-    This program is free software; you can redistribute it and/or modify it
-    under the same terms as Perl itself.
-
-    See <http://www.perl.com/perl/misc/Artistic.html>
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 

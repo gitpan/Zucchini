@@ -1,8 +1,15 @@
 package Zucchini::Config;
+{
+  $Zucchini::Config::VERSION = '0.0.18_01';
+}
+{
+  $Zucchini::Config::DIST = 'Zucchini';
+}
+# ABSTRACT: configuration provider
 # vim: ts=8 sts=4 et sw=4 sr sta
-use Moose; # automatically turns on strict and warnings
-
-use Zucchini::Version; our $VERSION = $Zucchini::VERSION;
+use Moo;
+use strict; # for kwalitee testing
+use MooX::Types::MooseLike::Base qw(:all);
 
 use Carp;
 use Config::Any;
@@ -13,26 +20,28 @@ use Zucchini::Config::Create;
 has data => (
     reader  => 'get_data',
     writer  => 'set_data',
-    isa     => 'HashRef',
+    isa     => HashRef,
+    is      => 'ro',
 );
 has options => (
     reader  => 'get_options',
     writer  => 'set_options',
-    isa     => 'HashRef',
+    isa     => HashRef,
+    is      => 'ro',
 );
 has site => (
     reader  => 'get_site',
     writer  => 'set_site',
-    isa     => 'Str',
+    isa     => Str,
+    is      => 'ro',
 );
 has config_file => (
     reader  => 'get_config_file',
     writer  => 'set_config_file',
-    isa     => 'Str',
+    isa     => Str,
     default => sub {q{}.file($ENV{HOME}, q{.zucchini})},
+    is      => 'ro',
 );
-
-__PACKAGE__->meta->make_immutable;
 
 
 sub BUILD {
@@ -303,13 +312,17 @@ sub _sane_config {
 
 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
-Zucchini::Config - manage configuration file loading
+Zucchini::Config - configuration provider
+
+=head1 VERSION
+
+version 0.0.18_01
 
 =head1 SYNOPSIS
 
@@ -726,15 +739,17 @@ L<Zucchini::Rsync>
 
 =head1 AUTHOR
 
-Chisel Wright C<< <chiselwright@users.berlios.de> >>
+Chisel <chisel@chizography.net>
 
-=head1 LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2008-2009 by Chisel Wright
+This software is copyright (c) 2012 by Chisel Wright.
 
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+

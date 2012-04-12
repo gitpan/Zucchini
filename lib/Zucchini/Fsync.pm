@@ -1,8 +1,16 @@
 package Zucchini::Fsync;
+{
+  $Zucchini::Fsync::VERSION = '0.0.18_01';
+}
+{
+  $Zucchini::Fsync::DIST = 'Zucchini';
+}
+# ABSTRACT: move files using FTP
 # vim: ts=8 sts=4 et sw=4 sr sta
-use Moose; # automatically turns on strict and warnings
-
-use Zucchini::Version; our $VERSION = $Zucchini::VERSION;
+use Moo;
+use strict; # for kwalitee testing
+use MooX::Types::MooseLike::Base qw(:all);
+use Zucchini::Types qw(:all);
 
 use Carp;
 use Config::Any;
@@ -18,25 +26,27 @@ use Path::Class;
 has config => (
     reader  => 'get_config',
     writer  => 'set_config',
-    isa     => 'Zucchini::Config',
+    isa     => ZucchiniConfig,
+    is      => 'ro',
 );
 has ftp_client => (
     reader  => 'get_ftp_client',
     writer  => 'set_ftp_client',
-    isa     => 'Net::FTP',
+    isa     => NetFTP,
+    is      => 'ro',
 );
 has ftp_root => (
     reader  => 'get_ftp_root',
     writer  => 'set_ftp_root',
-    isa     => 'Str',
+    isa     => Str,
+    is      => 'ro',
 );
 has remote_digest => (
     reader  => 'get_remote_digest',
     writer  => 'set_remote_digest',
-    isa     => 'Str',
+    isa     => Str,
+    is      => 'ro',
 );
-
-__PACKAGE__->meta->make_immutable;
 
 sub BUILD {
     my $self = shift;
@@ -449,13 +459,17 @@ sub prepare_ftp_client {
 
 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
-Zucchini::Fsync - transfer files to remote server using "ftp-sync"
+Zucchini::Fsync - move files using FTP
+
+=head1 VERSION
+
+version 0.0.18_01
 
 =head1 SYNOPSIS
 
@@ -637,15 +651,17 @@ L<Zucchini>,
 
 =head1 AUTHOR
 
-Chisel Wright C<< <chiselwright@users.berlios.de> >>
+Chisel <chisel@chizography.net>
 
-=head1 LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2008-2009 by Chisel Wright
+This software is copyright (c) 2012 by Chisel Wright.
 
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+

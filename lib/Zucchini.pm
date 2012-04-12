@@ -1,8 +1,16 @@
 package Zucchini;
+{
+  $Zucchini::VERSION = '0.0.18_01';
+}
+{
+  $Zucchini::DIST = 'Zucchini';
+}
+# ABSTRACT: turn templates into static websites
 # vim: ts=8 sts=4 et sw=4 sr sta
-use Moose; # automatically turns on strict and warnings
+use Moo;
+use strict; # for kwalitee testing
+use Zucchini::Types qw(:all);
 
-use Zucchini::Version; our $VERSION = $Zucchini::VERSION;
 use Zucchini::Config;
 use Zucchini::Fsync;
 use Zucchini::Rsync;
@@ -11,10 +19,9 @@ use Zucchini::Template;
 has config => (
     reader  => 'get_config',
     writer  => 'set_config',
-    isa     => 'Zucchini::Config',
+    isa     => ZucchiniConfig,
+    is      => 'ro',
 );
-
-__PACKAGE__->meta->make_immutable;
 
 sub BUILD {
     my ($self, $arg_ref) = @_;
@@ -122,13 +129,17 @@ sub remote_sync {
 # true value at tail end of module'
 q{This truth was inspired by YAPC::Europe::2008};
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
 Zucchini - turn templates into static websites
+
+=head1 VERSION
+
+version 0.0.18_01
 
 =head1 SYNOPSIS
 
@@ -214,15 +225,17 @@ L<Template>
 
 =head1 AUTHOR
 
-Chisel Wright C<< <chiselwright@users.berlios.de> >>
+Chisel <chisel@chizography.net>
 
-=head1 LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2008-2009 by Chisel Wright
+This software is copyright (c) 2012 by Chisel Wright.
 
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+

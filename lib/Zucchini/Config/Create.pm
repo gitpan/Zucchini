@@ -1,10 +1,14 @@
 package Zucchini::Config::Create;
+{
+  $Zucchini::Config::Create::VERSION = '0.0.18_01';
+}
+{
+  $Zucchini::Config::Create::DIST = 'Zucchini';
+}
+# ABSTRACT: write a sample configuration file
 # vim: ts=8 sts=4 et sw=4 sr sta
-use Moose; # automatically turns on strict and warnings
-
-__PACKAGE__->meta->make_immutable;
-
-use Zucchini::Version; our $VERSION = $Zucchini::VERSION;
+use Moo;
+use strict; # for kwalitee testing
 
 use IO::File;
 
@@ -32,9 +36,18 @@ sub write_default_config {
 
 1;
 
+
+
+
+=pod
+
 =head1 NAME
 
 Zucchini::Config::Create - write a sample configuration file
+
+=head1 VERSION
+
+version 0.0.18_01
 
 =head1 SYNOPSIS
 
@@ -52,6 +65,10 @@ It's mean to expect people to pluck a configuration file out if thin air.
 
 This module's sole purpose is to write out a default .zucchini file to give
 users a fighting chance.
+
+=head1 NAME
+
+Zucchini::Config::Create - write a sample configuration file
 
 =head1 METHODS
 
@@ -101,7 +118,19 @@ the same terms as Perl itself.
 
 See <http://www.perl.com/perl/misc/Artistic.html>
 
+=head1 AUTHOR
+
+Chisel <chisel@chizography.net>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2012 by Chisel Wright.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
 
 __DATA__
 

@@ -1,44 +1,51 @@
 ---
 abstract: 'turn templates into static websites'
 author:
-  - 'Chisel Wright<chiselwright@users.berlios.de>'
+  - 'Chisel <chisel@chizography.net>'
 build_requires:
   Config::General: 2.37
   File::Find: 0
   File::Temp: 0.18
+  FindBin: 0
+  Moose: 0
   Test::File::Contents: 0.05
   Test::More: 0.72
   Test::NoWarnings: 0.083
-distribution_type: module
-generated_by: 'Module::Install version 0.75'
+  Test::UseAllModules: 0
+  Zucchini::Test: 0
+  Zucchini::TestConfig: 0
+  warnings: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300010, CPAN::Meta::Converter version 2.120630'
 license: perl
 meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.3.html
-  version: 1.3
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
 name: Zucchini
-no_index:
-  directory:
-    - legacy
-    - inc
-    - t
-recommends:
-  Config::General: 2.37
 requires:
   Carp: 0
-  Config::Any: 0.09
-  Digest::MD5: 2.36
+  Config::Any: 0
+  Digest::MD5: 0
+  Exporter: 0
   File::Basename: 0
-  File::Copy: 2.09
+  File::Copy: 0
   File::Find: 0
-  File::Rsync: 0.42
-  File::Slurp: 9999.12
+  File::Rsync: 0
+  File::Slurp: 0
   File::Temp: 0
-  File::stat: 1.00
-  HTML::Lint: 2.02
+  File::stat: 0
+  HTML::Lint: 0
   IO::File: 0
-  Moose: 0.55
-  Net::FTP: 2.77
-  Path::Class: 0.16
-  Template: 2.19
-  version: 0
-version: 0.0.17
+  Moo: 0
+  MooX::Types::MooseLike::Base: 0
+  Net::FTP: 0
+  Path::Class: 0
+  Template: 0
+  base: 0
+  strict: 0
+resources:
+  bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Zucchini
+  repository: git://github.com/chiselwright/zucchini
+version: 0.0.18_01

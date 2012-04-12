@@ -1,53 +1,83 @@
-# Load the Module::Install bundled in ./inc/
-use inc::Module::Install;
 
-# Define metadata
-name            'Zucchini';
-version         '0.0.17';
-author          'Chisel Wright<chiselwright@users.berlios.de>';
-license         'perl';
-abstract        'turn templates into static websites';
+use strict;
+use warnings;
 
 
-# Specific dependencies
-requires(
-    'Carp'                          => 0, # core with perl5
-    'Config::Any'                   => '0.09',
-    'Digest::MD5'                   => '2.36',
-    'File::Basename'                => 0, # core with perl5
-    'File::Copy'                    => '2.09',
-    'File::Find'                    => 0, # core with perl5
-    'File::Rsync'                   => '0.42',
-    'File::Slurp'                   => '9999.12',
-    'File::stat'                    => '1.00',
-    'File::Temp'                    => 0, # core since 5.006001
-    'HTML::Lint'                    => '2.02',
-    'IO::File'                      => 0, # core since 5.00307
-    'Moose'                         => '0.55',
-    'Net::FTP'                      => '2.77',
-    'Path::Class'                   => '0.16',
-    'Template'                      => '2.19',
-    'version'                       => 0, # core since 5.009
+
+use ExtUtils::MakeMaker 6.30;
+
+
+
+my %WriteMakefileArgs = (
+  "ABSTRACT" => "turn templates into static websites",
+  "AUTHOR" => "Chisel <chisel\@chizography.net>",
+  "BUILD_REQUIRES" => {
+    "Config::General" => "2.37",
+    "File::Find" => 0,
+    "File::Temp" => "0.18",
+    "FindBin" => 0,
+    "Moose" => 0,
+    "Test::File::Contents" => "0.05",
+    "Test::More" => "0.72",
+    "Test::NoWarnings" => "0.083",
+    "Test::UseAllModules" => 0,
+    "Zucchini::Test" => 0,
+    "Zucchini::TestConfig" => 0,
+    "warnings" => 0
+  },
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
+  },
+  "DISTNAME" => "Zucchini",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Zucchini",
+  "PREREQ_PM" => {
+    "Carp" => 0,
+    "Config::Any" => 0,
+    "Digest::MD5" => 0,
+    "Exporter" => 0,
+    "File::Basename" => 0,
+    "File::Copy" => 0,
+    "File::Find" => 0,
+    "File::Rsync" => 0,
+    "File::Slurp" => 0,
+    "File::Temp" => 0,
+    "File::stat" => 0,
+    "HTML::Lint" => 0,
+    "IO::File" => 0,
+    "Moo" => 0,
+    "MooX::Types::MooseLike::Base" => 0,
+    "Net::FTP" => 0,
+    "Path::Class" => 0,
+    "Template" => 0,
+    "base" => 0,
+    "strict" => 0
+  },
+  "VERSION" => "0.0.18_01",
+  "test" => {
+    "TESTS" => "t/*.t"
+  }
 );
 
-# dependencies for building/testing
-build_requires(
-    'Config::General'               => '2.37',
-    'File::Find'                    => 0, # core with perl5
-    'File::Temp'                    => '0.18',
-    'Test::File::Contents'          => '0.05',
-    'Test::More'                    => '0.72',
-    'Test::NoWarnings'              => '0.083',
-);
 
-# recommended modules for the script to "be the best"
-# XXX does this actually do anything without auto_install?
-recommends (
-    'Config::General'               => '2.37',
-);
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
 
-no_index    'directory' => 'legacy';
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
 
-install_script 'script/zucchini';
-#auto_install;
-WriteAll;
+WriteMakefile(%WriteMakefileArgs);
+
+
+

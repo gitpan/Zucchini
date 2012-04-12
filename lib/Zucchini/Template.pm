@@ -1,8 +1,15 @@
 package Zucchini::Template;
+{
+  $Zucchini::Template::VERSION = '0.0.18_01';
+}
+{
+  $Zucchini::Template::DIST = 'Zucchini';
+}
+# ABSTRACT: process templates and output static files
 # vim: ts=8 sts=4 et sw=4 sr sta
-use Moose; # automatically turns on strict and warnings
-
-use Zucchini::Version; our $VERSION = $Zucchini::VERSION;
+use Moo;
+use strict; # for kwalitee testing
+use Zucchini::Types qw(:all);
 
 use Carp;
 use Digest::MD5;
@@ -16,16 +23,16 @@ use Template;
 has config => (
     reader  => 'get_config',
     writer  => 'set_config',
-    isa     => 'Zucchini::Config',
+    isa     => ZucchiniConfig,
+    is      => 'ro',
 );
 
 has ttobject => (
     reader  => 'get_ttobject',
     writer  => 'set_ttobject',
-    isa     => 'Template',
+    isa     => TemplateToolkit,
+    is      => 'ro',
 );
-
-__PACKAGE__->meta->make_immutable;
 
 sub process_site {
     my $self = shift;
@@ -108,10 +115,10 @@ sub directory_contents {
     my (@list);
 
     # get a list of everything (except . and ..) in $directory
-    opendir(DIR, $directory)
+    opendir(my $dh, $directory)
         or die("can't open '$directory': $!\n");
 
-    @list = grep { $_ !~ /^\.\.?$/ } readdir(DIR);
+    @list = grep { $_ !~ /^\.\.?$/ } readdir($dh);
 
     return @list;
 }
@@ -122,11 +129,11 @@ sub file_checksum {
     my ($md5);
 
     # try to open the file
-    open(FILE,$file) or do {
+    open(my $fh,$file) or do {
         warn "Can't open $file: $!";
         return undef;
     };
-    binmode(FILE);
+    binmode($fh);
 
     $md5 = Digest::MD5->new->addfile(*FILE)->hexdigest;
 
@@ -449,13 +456,17 @@ sub _prepare_template_object {
 
 1;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
 Zucchini::Template - process templates and output static files
+
+=head1 VERSION
+
+version 0.0.18_01
 
 =head1 SYNOPSIS
 
@@ -621,7 +632,7 @@ to.
 
   # let user know where we're putting the item
   $self->show_destination($directory, $item);
-  
+
 =head2 template_file
 
 Detemine if the file should be treated as a template. Template files are
@@ -638,16 +649,17 @@ L<Zucchini::Config>
 
 =head1 AUTHOR
 
-Chisel Wright C<< <chiselwright@users.berlios.de> >>
+Chisel <chisel@chizography.net>
 
-=head1 LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2008-2009 by Chisel Wright
+This software is copyright (c) 2012 by Chisel Wright.
 
-This program is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
-
-See <http://www.perl.com/perl/misc/Artistic.html>
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
 
