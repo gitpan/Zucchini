@@ -22,14 +22,15 @@ my %WriteMakefileArgs = (
     "Test::NoWarnings" => "0.083",
     "Test::UseAllModules" => 0,
     "Zucchini::Test" => 0,
-    "Zucchini::TestConfig" => 0,
-    "warnings" => 0
+    "Zucchini::TestConfig" => 0
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
   },
   "DISTNAME" => "Zucchini",
-  "EXE_FILES" => [],
+  "EXE_FILES" => [
+    "script/zucchini"
+  ],
   "LICENSE" => "perl",
   "NAME" => "Zucchini",
   "PREREQ_PM" => {
@@ -44,17 +45,21 @@ my %WriteMakefileArgs = (
     "File::Slurp" => 0,
     "File::Temp" => 0,
     "File::stat" => 0,
+    "Getopt::Long" => 0,
     "HTML::Lint" => 0,
     "IO::File" => 0,
     "Moo" => 0,
     "MooX::Types::MooseLike::Base" => 0,
     "Net::FTP" => 0,
     "Path::Class" => 0,
+    "Pod::Usage" => 0,
     "Template" => 0,
     "base" => 0,
-    "strict" => 0
+    "strict" => 0,
+    "version" => 0,
+    "warnings" => 0
   },
-  "VERSION" => "0.0.18_01",
+  "VERSION" => "0.0.18_02",
   "test" => {
     "TESTS" => "t/*.t"
   }

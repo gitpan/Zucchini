@@ -1,6 +1,6 @@
 package Zucchini;
 {
-  $Zucchini::VERSION = '0.0.18_01';
+  $Zucchini::VERSION = '0.0.18_02';
 }
 {
   $Zucchini::DIST = 'Zucchini';
@@ -139,7 +139,7 @@ Zucchini - turn templates into static websites
 
 =head1 VERSION
 
-version 0.0.18_01
+version 0.0.18_02
 
 =head1 SYNOPSIS
 

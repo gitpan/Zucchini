@@ -2,7 +2,7 @@ NAME
     Zucchini - turn templates into static websites
 
 VERSION
-    version 0.0.18_01
+    version 0.0.18_02
 
 SYNOPSIS
       $ zucchini --create-config    # create a default config

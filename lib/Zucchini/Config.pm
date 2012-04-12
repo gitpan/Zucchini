@@ -1,6 +1,6 @@
 package Zucchini::Config;
 {
-  $Zucchini::Config::VERSION = '0.0.18_01';
+  $Zucchini::Config::VERSION = '0.0.18_02';
 }
 {
   $Zucchini::Config::DIST = 'Zucchini';
@@ -322,7 +322,7 @@ Zucchini::Config - configuration provider
 
 =head1 VERSION
 
-version 0.0.18_01
+version 0.0.18_02
 
 =head1 SYNOPSIS
 

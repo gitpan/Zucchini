@@ -11,7 +11,7 @@ Zucchini::Manual::Tutorial - simple website example
 
 =head1 VERSION
 
-version 0.0.18_01
+version 0.0.18_02
 
 =head1 DESCRIPTION
 

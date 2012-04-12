@@ -11,7 +11,7 @@ Zucchini::Contributors - people that helped out along the way
 
 =head1 VERSION
 
-version 0.0.18_01
+version 0.0.18_02
 
 =head1 NAME
 
