@@ -14,10 +14,11 @@ build_requires:
   Test::UseAllModules: 0
   Zucchini::Test: 0
   Zucchini::TestConfig: 0
+  lib: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300010, CPAN::Meta::Converter version 2.120630'
+generated_by: 'Dist::Zilla version 5.012, CPAN::Meta::Converter version 2.132830'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -33,7 +34,7 @@ requires:
   File::Find: 0
   File::Rsync: 0
   File::Slurp: 0
-  File::Temp: 0
+  File::Temp: 0.18
   File::stat: 0
   Getopt::Long: 0
   HTML::Lint: 0
@@ -50,5 +51,5 @@ requires:
   warnings: 0
 resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Zucchini
-  repository: git://github.com/chiselwright/zucchini
-version: 0.0.18_02
+  repository: git://github.com/chiselwright/zucchini.git
+version: 0.0.19

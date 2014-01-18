@@ -1,7 +1,5 @@
 package Zucchini::Fsync;
-{
-  $Zucchini::Fsync::VERSION = '0.0.18_02';
-}
+$Zucchini::Fsync::VERSION = '0.0.19';
 {
   $Zucchini::Fsync::DIST = 'Zucchini';
 }
@@ -459,7 +457,7 @@ sub prepare_ftp_client {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -469,7 +467,7 @@ Zucchini::Fsync - move files using FTP
 
 =head1 VERSION
 
-version 0.0.18_02
+version 0.0.19
 
 =head1 SYNOPSIS
 
@@ -661,7 +659,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

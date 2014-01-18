@@ -1,7 +1,5 @@
 package Zucchini::Config::Create;
-{
-  $Zucchini::Config::Create::VERSION = '0.0.18_02';
-}
+$Zucchini::Config::Create::VERSION = '0.0.19';
 {
   $Zucchini::Config::Create::DIST = 'Zucchini';
 }
@@ -36,9 +34,6 @@ sub write_default_config {
 
 1;
 
-
-
-
 =pod
 
 =head1 NAME
@@ -47,7 +42,7 @@ Zucchini::Config::Create - write a sample configuration file
 
 =head1 VERSION
 
-version 0.0.18_02
+version 0.0.19
 
 =head1 SYNOPSIS
 
@@ -130,7 +125,6 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
 
 __DATA__
 

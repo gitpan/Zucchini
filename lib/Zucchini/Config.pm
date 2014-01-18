@@ -1,7 +1,5 @@
 package Zucchini::Config;
-{
-  $Zucchini::Config::VERSION = '0.0.18_02';
-}
+$Zucchini::Config::VERSION = '0.0.19';
 {
   $Zucchini::Config::DIST = 'Zucchini';
 }
@@ -312,7 +310,7 @@ sub _sane_config {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -322,7 +320,7 @@ Zucchini::Config - configuration provider
 
 =head1 VERSION
 
-version 0.0.18_02
+version 0.0.19
 
 =head1 SYNOPSIS
 
@@ -749,7 +747,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

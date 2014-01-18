@@ -8,9 +8,24 @@ BEGIN {
 
 use strict;
 use warnings;
-use Test::More;
 
-eval 'use Test::NoTabs';
-plan skip_all => 'Test::NoTabs required' if $@;
+# this test was generated with Dist::Zilla::Plugin::NoTabsTests 0.05
 
-all_perl_files_ok();
+use Test::More 0.88;
+use Test::NoTabs;
+
+my @files = (
+    'lib/Zucchini.pm',
+    'lib/Zucchini/Config.pm',
+    'lib/Zucchini/Config/Create.pm',
+    'lib/Zucchini/Contributors.pod',
+    'lib/Zucchini/Fsync.pm',
+    'lib/Zucchini/Manual/Tutorial.pod',
+    'lib/Zucchini/Rsync.pm',
+    'lib/Zucchini/Template.pm',
+    'lib/Zucchini/Types.pm',
+    'script/zucchini'
+);
+
+notabs_ok($_) foreach @files;
+done_testing;

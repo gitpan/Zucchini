@@ -1,7 +1,5 @@
 package Zucchini::Template;
-{
-  $Zucchini::Template::VERSION = '0.0.18_02';
-}
+$Zucchini::Template::VERSION = '0.0.19';
 {
   $Zucchini::Template::DIST = 'Zucchini';
 }
@@ -276,8 +274,18 @@ sub process_file {
         if ($self->get_config()->get_siteconfig()->{lint_check}) {
             # check for HTML errors in file
             if ($item =~ m{\.html?\z}) {
-                # create a new HTML::Lint object
-                my $lint = HTML::Lint->new();
+                my $lint;
+                eval "use HTML::Lint::Pluggable";
+                if ($@) {
+                    # create a new HTML::Lint object
+                    $lint = HTML::Lint->new();
+                }
+                else {
+                    # create a new HTML::Lint::Pluggable object
+                    $lint = HTML::Lint::Pluggable->new();
+                    #  this gives us HTML5 support
+                    $lint->load_plugins(qw/HTML5/);
+                }
 
                 $lint->parse_file(
                     file($config->{output_dir},$relpath,$item) . q{}
@@ -456,7 +464,7 @@ sub _prepare_template_object {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -466,7 +474,7 @@ Zucchini::Template - process templates and output static files
 
 =head1 VERSION
 
-version 0.0.18_02
+version 0.0.19
 
 =head1 SYNOPSIS
 
@@ -659,7 +667,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

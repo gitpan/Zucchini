@@ -1,7 +1,5 @@
 package Zucchini::Types;
-{
-  $Zucchini::Types::VERSION = '0.0.18_02';
-}
+$Zucchini::Types::VERSION = '0.0.19';
 {
   $Zucchini::Types::DIST = 'Zucchini';
 }
@@ -33,6 +31,7 @@ MooX::Types::MooseLike::register_types($defs, __PACKAGE__);
 our %EXPORT_TAGS = ('all' => \@EXPORT_OK);
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -41,7 +40,7 @@ Zucchini::Types - Moo type definitions
 
 =head1 VERSION
 
-version 0.0.18_02
+version 0.0.19
 
 =head1 AUTHOR
 
@@ -55,4 +54,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
