@@ -1,5 +1,5 @@
 package Zucchini::Config;
-$Zucchini::Config::VERSION = '0.0.19';
+$Zucchini::Config::VERSION = '0.0.20';
 {
   $Zucchini::Config::DIST = 'Zucchini';
 }
@@ -314,13 +314,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Zucchini::Config - configuration provider
 
 =head1 VERSION
 
-version 0.0.19
+version 0.0.20
 
 =head1 SYNOPSIS
 

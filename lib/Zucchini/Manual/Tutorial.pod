@@ -5,13 +5,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Zucchini::Manual::Tutorial - simple website example
 
 =head1 VERSION
 
-version 0.0.19
+version 0.0.20
 
 =head1 DESCRIPTION
 

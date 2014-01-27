@@ -1,5 +1,5 @@
 package Zucchini::Types;
-$Zucchini::Types::VERSION = '0.0.19';
+$Zucchini::Types::VERSION = '0.0.20';
 {
   $Zucchini::Types::DIST = 'Zucchini';
 }
@@ -34,13 +34,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Zucchini::Types - Moo type definitions
 
 =head1 VERSION
 
-version 0.0.19
+version 0.0.20
 
 =head1 AUTHOR
 

@@ -3,6 +3,7 @@ Changes
 LICENSE
 MANIFEST
 MANIFEST.SKIP
+META.json
 META.yml
 Makefile.PL
 README
@@ -59,6 +60,8 @@ t/05.zucchini.rsync.t
 t/06.zucchini.fsync.t
 t/10.site.t
 t/11.impressum.t
+t/lib/Zucchini/Test.pm
+t/lib/Zucchini/TestConfig.pm
 t/release-kwalitee.t
 t/release-no-tabs.t
 t/release-pod-coverage.t
@@ -77,5 +80,3 @@ t/testdata/templates/index.html
 t/testdata/templates/subdir1/abby.jpg
 t/testdata/templates/subdir1/index.html
 t/testdata/templates/subdir1/tags.html
-t/testlib/Zucchini/Test.pm
-t/testlib/Zucchini/TestConfig.pm

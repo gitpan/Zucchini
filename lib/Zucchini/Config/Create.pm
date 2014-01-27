@@ -1,5 +1,5 @@
 package Zucchini::Config::Create;
-$Zucchini::Config::Create::VERSION = '0.0.19';
+$Zucchini::Config::Create::VERSION = '0.0.20';
 {
   $Zucchini::Config::Create::DIST = 'Zucchini';
 }
@@ -36,13 +36,15 @@ sub write_default_config {
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Zucchini::Config::Create - write a sample configuration file
 
 =head1 VERSION
 
-version 0.0.19
+version 0.0.20
 
 =head1 SYNOPSIS
 

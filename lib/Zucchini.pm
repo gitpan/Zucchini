@@ -1,5 +1,5 @@
 package Zucchini;
-$Zucchini::VERSION = '0.0.19';
+$Zucchini::VERSION = '0.0.20';
 {
   $Zucchini::DIST = 'Zucchini';
 }
@@ -131,13 +131,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Zucchini - turn templates into static websites
 
 =head1 VERSION
 
-version 0.0.19
+version 0.0.20
 
 =head1 SYNOPSIS
 

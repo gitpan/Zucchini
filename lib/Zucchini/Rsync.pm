@@ -1,5 +1,5 @@
 package Zucchini::Rsync;
-$Zucchini::Rsync::VERSION = '0.0.19';
+$Zucchini::Rsync::VERSION = '0.0.20';
 {
   $Zucchini::Rsync::DIST = 'Zucchini';
 }
@@ -88,13 +88,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Zucchini::Rsync - move files using rsync
 
 =head1 VERSION
 
-version 0.0.19
+version 0.0.20
 
 =head1 SYNOPSIS
 
