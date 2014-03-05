@@ -1,5 +1,5 @@
 package Zucchini::Template;
-$Zucchini::Template::VERSION = '0.0.20';
+$Zucchini::Template::VERSION = '0.0.21';
 {
   $Zucchini::Template::DIST = 'Zucchini';
 }
@@ -133,7 +133,7 @@ sub file_checksum {
     };
     binmode($fh);
 
-    $md5 = Digest::MD5->new->addfile(*FILE)->hexdigest;
+    $md5 = Digest::MD5->new->addfile($fh)->hexdigest;
 
     return $md5;
 }
@@ -476,7 +476,7 @@ Zucchini::Template - process templates and output static files
 
 =head1 VERSION
 
-version 0.0.20
+version 0.0.21
 
 =head1 SYNOPSIS
 

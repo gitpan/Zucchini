@@ -1,5 +1,5 @@
 package Zucchini::Fsync;
-$Zucchini::Fsync::VERSION = '0.0.20';
+$Zucchini::Fsync::VERSION = '0.0.21';
 {
   $Zucchini::Fsync::DIST = 'Zucchini';
 }
@@ -469,7 +469,7 @@ Zucchini::Fsync - move files using FTP
 
 =head1 VERSION
 
-version 0.0.20
+version 0.0.21
 
 =head1 SYNOPSIS
 

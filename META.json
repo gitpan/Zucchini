@@ -76,9 +76,10 @@
       },
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/chiselwright/zucchini"
+         "url" : "git://github.com/chiselwright/zucchini.git",
+         "web" : "https://github.com/chiselwright/zucchini"
       }
    },
-   "version" : "0.0.20"
+   "version" : "0.0.21"
 }
 

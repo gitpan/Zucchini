@@ -14,15 +14,15 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 618ea21c3d09b9956ff9e9544d68c37b1035fb43 Changes
+SHA1 384998b5ecdc12b1a2ff9790e360a3868dbeef15 Changes
 SHA1 20a111f37382cd1957ca05c8ab4b85d526679129 LICENSE
 SHA1 33878b4084df8abdd8a26797894ad4ed44d13b45 MANIFEST
 SHA1 5067f3bc804e215dcc0cb1689224a0ac89e0b753 MANIFEST.SKIP
-SHA1 5da4a42db6a557e758f201d8bb8101d6bc3acb46 META.json
-SHA1 8b0075c15b02923dcf05b44020439f6ef3c94d0b META.yml
-SHA1 1cfabbd27a3b9258e5f6086a7684d5e218f8c251 Makefile.PL
-SHA1 e95e0bc6d36a0761919e7de501cea1d857e1783d README
-SHA1 210f958c57fec31e265627f261f27af069e208c0 README.mkdn
+SHA1 5155119bd1313d4c2b9e78c8feef13f821896ab7 META.json
+SHA1 06d55628cd75bb1e06029f3c4a0d3ba30fc47ae4 META.yml
+SHA1 7ace59526c4fad0c4734c6d2658c527ff1248e35 Makefile.PL
+SHA1 e7fc70896ce3c9349fec61a2486bddb3e76c0067 README
+SHA1 49c0f1b56c91149859510b16463341dbc8d94b9c README.mkdn
 SHA1 5fdb5554cd9267c2aecc9ee24d319e5791eaa340 TODO
 SHA1 690211af3e11e348e419bf6099685df5b26ea99f doc/s5/images/zucchini.jpg
 SHA1 95bb79766facf74ebe533ce902279371dfacc182 doc/s5/s5-blank.html
@@ -52,16 +52,16 @@ SHA1 a1d9b08f39218ad0bf1fa6f3a7ed5f35519a2c59 doc/s5/ui/herlpacker/slides.css
 SHA1 e14b00a62874e58116989adf3d5a1f15b7e601b8 doc/s5/ui/herlpacker/slides.js
 SHA1 d59cb750f60d7532fa09fe27c52d64c5e8bf6c28 doc/s5/zucchini.html
 SHA1 d6be075c1ecee1688c7bfc903c48d8a248c1a36a legacy/ttsite.original
-SHA1 1b48b057ddebf38f7d40692075be429eba49bd08 lib/Zucchini.pm
-SHA1 ec15552c48da6c3be39a1e82c841f5cb2e3e13c5 lib/Zucchini/Config.pm
-SHA1 55e30c18366ac2c780cc6fd2d07914659e196a3a lib/Zucchini/Config/Create.pm
-SHA1 bad4694e8fe6adff63aaf86b20840687346d9f75 lib/Zucchini/Contributors.pod
-SHA1 64ceea6b5321106fa61797a2b254f89054d70406 lib/Zucchini/Fsync.pm
-SHA1 c74a08a898782800e43d75d6c73687f4d28b35f2 lib/Zucchini/Manual/Tutorial.pod
-SHA1 81b22e5f8aafa71979b1b954d896dc8b868923c6 lib/Zucchini/Rsync.pm
-SHA1 86619a06abda4b14f160cbdb5fea0d9923f84337 lib/Zucchini/Template.pm
-SHA1 4d53cc7ffef160c0b6be0dd452baffdc60f1f8db lib/Zucchini/Types.pm
-SHA1 1d53aa33e6e7c81d1351941a9c69549b895219ce script/zucchini
+SHA1 bd13944770e49d911f60b7958168eae66a2505e5 lib/Zucchini.pm
+SHA1 bd30e05dc103123c943e25b27265795e3287244e lib/Zucchini/Config.pm
+SHA1 8dc956d8d790d69de8bca0c835fe77fc5ed5be90 lib/Zucchini/Config/Create.pm
+SHA1 35fd38c43c94c4e146c6d788540e84b050551458 lib/Zucchini/Contributors.pod
+SHA1 f10cb80372770ebd34ffd6726bbee18fa6f03fa3 lib/Zucchini/Fsync.pm
+SHA1 880f0b03443566314bbbd1fdb33c2d95d34c28af lib/Zucchini/Manual/Tutorial.pod
+SHA1 a330c150ec1168452fb99afee3fa9e78582ce0e9 lib/Zucchini/Rsync.pm
+SHA1 d0d4d47f7be7529898a85e946f905311f38bfbee lib/Zucchini/Template.pm
+SHA1 70383bf48ed9554a185c1e838607031b5979b62c lib/Zucchini/Types.pm
+SHA1 60aa3934857e18fb53a5933e146ef6d5df473ac4 script/zucchini
 SHA1 86cd488198ef1835477613f6a2256994986660aa t/00-load.t
 SHA1 4aa914ded39f00ead3d97f5c8139a3fce0f33d6b t/00.use.t
 SHA1 a92989777d1d3b11290c838a745351f32178544c t/00.zucchini.test.t
@@ -95,9 +95,9 @@ SHA1 f968a317e2690b6f5e7f48331da6cbf6166c2693 t/testdata/templates/subdir1/abby.
 SHA1 9fec31d440e591e8a07e275704e4dee0149969d3 t/testdata/templates/subdir1/index.html
 SHA1 c2c72b0e59f421f61b43339d7c16e5017a1bc21b t/testdata/templates/subdir1/tags.html
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.14 (GNU/Linux)
+Version: GnuPG v1.4.11 (GNU/Linux)
 
-iEYEARECAAYFAlLlom4ACgkQh4j7xTiFuxG2YACggaby7hS8BsreqDijpXhqje2l
-WJMAn3r1tXIA5XJZ6sTVBvq8s99/iTaP
-=Ym4V
+iEYEARECAAYFAlMXm7kACgkQh4j7xTiFuxE80gCfaiNEwlilH7x0mPBnMs9LTs7m
+Tl4AnRbbkGAc07m9EdljBUPZloy5azpX
+=mX7M
 -----END PGP SIGNATURE-----

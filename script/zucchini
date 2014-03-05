@@ -10,6 +10,8 @@ use Pod::Usage;
 use version;
 use Zucchini;
 
+use Zucchini;  our $VERSION = $Zucchini::VERSION;
+
 # evil globals
 my ($zucchini, %cliopt);
 
@@ -67,7 +69,7 @@ zucchini - script to generate and upload template based websites
 
 =head1 VERSION
 
-version 0.0.20
+version 0.0.21
 
 =head1 SYNOPSIS
 

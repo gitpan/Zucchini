@@ -1,5 +1,9 @@
 This file documents the revision history for Zucchini
 
+0.0.21    2014-03-05 21:48:33+00:00 UTC
+ - fix $fh/*FILE usage in ::Template
+ - add $VERSION to script/zucchini
+
 0.0.20    2014-01-27 00:03:50+00:00 Europe/London
  - update preferred Bugtracker to point to github
  - don't manually specify test deps in dist.ini

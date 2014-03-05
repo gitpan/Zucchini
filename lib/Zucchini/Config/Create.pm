@@ -1,5 +1,5 @@
 package Zucchini::Config::Create;
-$Zucchini::Config::Create::VERSION = '0.0.20';
+$Zucchini::Config::Create::VERSION = '0.0.21';
 {
   $Zucchini::Config::Create::DIST = 'Zucchini';
 }
@@ -44,7 +44,7 @@ Zucchini::Config::Create - write a sample configuration file
 
 =head1 VERSION
 
-version 0.0.20
+version 0.0.21
 
 =head1 SYNOPSIS
 
